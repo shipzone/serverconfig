@@ -1,0 +1,5 @@
+.idea/
+coverage/
+docs/
+ts/typings/
+node_modules/
