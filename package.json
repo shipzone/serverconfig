@@ -1,34 +1,19 @@
 {
   "name": "serverconfig",
-  "version": "0.0.0",
-  "description": "easy server configuration",
+  "version": "1.0.0",
+  "description": "integrate a server within the lossless stack",
   "main": "dist/index.js",
   "scripts": {
     "test": "(npmts)"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/HostToday/serverconfig.git"
+    "url": "git+ssh://git@gitlab.com/shipzone/serverconfig.git"
   },
-  "keywords": [
-    "server",
-    "config",
-    "docker",
-    "docker-compose",
-    "ssl",
-    "reverse-nginx"
-  ],
   "author": "Lossless GmbH",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/HostToday/serverconfig/issues"
+    "url": "https://gitlab.com/shipzone/serverconfig/issues"
   },
-  "homepage": "https://github.com/HostToday/serverconfig#readme",
-  "devDependencies": {
-    "npmts": "^3.3.2"
-  },
-  "dependencies": {
-    "shelljs": "^0.6.0",
-    "smartcli": "0.0.11"
-  }
+  "homepage": "https://gitlab.com/shipzone/serverconfig#README"
 }
