@@ -1,6 +1,6 @@
 {
   "name": "serverconfig",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "ship to new servers quickly",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
