@@ -1,18 +1,29 @@
 {
-  "name": "serverconfig",
+  "name": "@shipzone/serverconfig",
   "version": "1.0.3",
+  "private": false,
   "description": "ship to new servers quickly",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "author": "Lossless GmbH",
   "license": "MIT",
+  "bin": {
+    "serverconfig": "./cli.js"
+  },
   "scripts": {
-    "test": "(npmts)"
+    "test": "(tstest test/)",
+    "build": "(tsbuild)"
   },
   "devDependencies": {
-    "tapbundle": "^1.0.13"
+    "@gitzone/tsbuild": "^2.0.22",
+    "@gitzone/tsrun": "^1.1.12",
+    "@gitzone/tstest": "^1.0.15",
+    "@pushrocks/tapbundle": "^3.0.7",
+    "@types/node": "^10.9.4"
   },
   "dependencies": {
-    "typings-global": "^1.0.16"
+    "@pushrocks/early": "^3.0.3",
+    "@pushrocks/smartcli": "^3.0.4",
+    "@pushrocks/smartfile": "^6.0.8"
   }
 }

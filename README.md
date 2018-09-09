@@ -1,13 +1,16 @@
 # serverconfig
+
 integrate a server within the lossless stack
 
 ## Availabililty
+
 [![npm](https://shipzone.gitlab.io/assets/repo-button-npm.svg)](https://www.npmjs.com/package/serverconfig)
 [![git](https://shipzone.gitlab.io/assets/repo-button-git.svg)](https://GitLab.com/shipzone/serverconfig)
 [![git](https://shipzone.gitlab.io/assets/repo-button-mirror.svg)](https://github.com/shipzone/serverconfig)
 [![docs](https://shipzone.gitlab.io/assets/repo-button-docs.svg)](https://shipzone.gitlab.io/serverconfig/)
 
 ## Status for master
+
 [![build status](https://GitLab.com/shipzone/serverconfig/badges/master/build.svg)](https://GitLab.com/shipzone/serverconfig/commits/master)
 [![coverage report](https://GitLab.com/shipzone/serverconfig/badges/master/coverage.svg)](https://GitLab.com/shipzone/serverconfig/commits/master)
 [![npm downloads per month](https://img.shields.io/npm/dm/serverconfig.svg)](https://www.npmjs.com/package/serverconfig)
@@ -19,6 +22,7 @@ integrate a server within the lossless stack
 [![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
 ## Usage
+
 Use TypeScript for best in class instellisense.
 
 For further information read the linked docs at the top of this README.

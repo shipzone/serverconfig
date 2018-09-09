@@ -1,8 +1,8 @@
-import { expect, tap } from 'tapbundle'
-import * as serverconfig from '../ts/index'
+import { expect, tap } from '@pushrocks/tapbundle';
+import * as serverconfig from '../ts/index';
 
 tap.test('first test', async () => {
-  console.log(serverconfig.standardExport)
-})
+  serverconfig
+});
 
-tap.start()
+tap.start();
