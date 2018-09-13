@@ -27,6 +27,7 @@
     "@pushrocks/smartcli": "^3.0.4",
     "@pushrocks/smartfile": "^6.0.8",
     "@pushrocks/smartinteract": "^2.0.4",
-    "@pushrocks/smartlog": "^2.0.1"
+    "@pushrocks/smartlog": "^2.0.1",
+    "@pushrocks/smartshell": "^2.0.6"
   }
 }

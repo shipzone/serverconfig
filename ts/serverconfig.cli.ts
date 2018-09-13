@@ -1,4 +1,5 @@
 import * as plugins from './serverconfig.plugins';
+import { SingleService } from './serverconfig.classes.singleservice';
 
 import { coloredString as cs } from '@pushrocks/consolecolor';
 
@@ -29,6 +30,13 @@ serverConfigCli.standardTask().subscribe(async argvArg => {
     if(dockerLoginBool) {
       console.log('great! Lets start your service: please enter your service info in the following format:');
       console.log(`${cs('REGISTRY_URL', 'pink')}|${cs('REGISTRY_USERNAME', 'pink')}|${cs('REGISTRY_PASSWORD', 'pink')}|${cs('IMAGE_NAME', 'pink')}|${cs('URL_TO_SERVE_UNDER', 'pink')}`);
+      const singleServiceInstance = new SingleService({
+        dockerImage: '',
+        dockerPass: '',
+        dockerRegistry: '',
+        dockerUser: ''
+      });
+      singleServiceInstance.deploy();
     }
   }
 

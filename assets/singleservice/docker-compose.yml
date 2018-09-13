@@ -2,7 +2,7 @@ version: "3.2"
 
 services:
   traefik:
-    image: traefik:1.5
+    image: traefik
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./configs/acme.json:/etc/traefik/acme/acme.json
@@ -24,6 +24,9 @@ services:
         delay: 10s
       restart_policy:
         condition: on-failure
+    labels:
+      - "traefik.protocol=http"
+      - "traefik.frontend.entryPoints=https"
 
 
 networks:
