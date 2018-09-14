@@ -27,6 +27,16 @@ services:
     labels:
       - "traefik.protocol=http"
       - "traefik.frontend.entryPoints=https"
+  singleservice:
+    deploy:
+      labels:
+        - "traefik.backend=nextcloud"
+        - "traefik.enable=true"
+        - "traefik.frontend.rule=Host:{{serviceDomain}}"
+        - "traefik.docker.network=webgateway"
+        - "traefik.port=80"
+        - "traefik.default.protocol=http"
+
 
 
 networks:
