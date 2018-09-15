@@ -1,0 +1,47 @@
+version: "3.2"
+
+services:
+  traefik:
+    image: traefik
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./configs/acme.json:/etc/traefik/acme/acme.json
+      - ./configs/traefik.toml:/etc/traefik/traefik.toml
+    networks:
+      - webgateway
+      - traefik
+    ports:
+      - 80:80
+      - 443:443
+      - 8080:8080
+    deploy:
+      mode: global
+      placement:
+        constraints:
+          - node.role == manager
+      update_config:
+        parallelism: 1
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+    labels:
+      - "traefik.protocol=http"
+      - "traefik.frontend.entryPoints=https"
+  singleservice:
+    image: registry.gitlab.com/hosttoday/ht-docker-node
+    deploy:
+      labels:
+        - "traefik.backend=ht-docker-node"
+        - "traefik.enable=true"
+        - "traefik.frontend.rule=Host:nice.bleu.de"
+        - "traefik.docker.network=webgateway"
+        - "traefik.port=80"
+        - "traefik.default.protocol=http"
+
+
+
+networks:
+  webgateway:
+    external: true
+  traefik:
+    driver: overlay

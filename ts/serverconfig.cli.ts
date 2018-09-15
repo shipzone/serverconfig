@@ -10,7 +10,10 @@ serverConfigCli.standardTask().subscribe(async argvArg => {
   siInstance.addQuestions([
     {
       message: 'What is the purpose of this server?',
-      choices: ['single service', 'servezone node'],
+      choices: [
+        'single service configured through cli',
+        'single service configured through configly',
+        'servezone node'],
       default: 'single service',
       name: 'purpose',
       type: 'list'
@@ -18,8 +21,8 @@ serverConfigCli.standardTask().subscribe(async argvArg => {
   ]);
   const answerBucket = await siInstance.runQueue();
   const purpose = answerBucket.getAnswerFor('purpose');
-  if(purpose === 'single service') {
-    console.log(`You selected ${cs('SINGLE SERVICE', "green")} as purpose of this server.`)
+  if(purpose === 'single service configured through cli') {
+    console.log(`You selected ${cs('SINGLE SERVICE CONFIGURED THROUGH CLI', "green")} as purpose of this server.`)
     console.log(`This will install ${cs('traefik', "pink")} with automatic ${cs('letsencrypt', "pink")} on this server`);
     const dockerLoginBool = await siInstance.askQuestion({
       message: 'do you want to log in to a private docker registry?',
@@ -27,29 +30,38 @@ serverConfigCli.standardTask().subscribe(async argvArg => {
       default: true,
       name: 'dockerLoginBool'
     });
-    if(dockerLoginBool) {
+    if(dockerLoginBool.value) {
       console.log('great! Lets start your service: please enter your service info in the following format:');
-      console.log(`${cs('REGISTRY_URL', 'pink')}|${cs('REGISTRY_USERNAME', 'pink')}|${cs('REGISTRY_PASSWORD', 'pink')}|${cs('IMAGE_NAME', 'pink')}|${cs('URL_TO_SERVE_UNDER', 'pink')}`);
+      console.log(`${cs('REGISTRY_URL', 'pink')}|${cs('REGISTRY_USERNAME', 'pink')}|${cs('REGISTRY_PASSWORD', 'pink')}`);
+      const dockerCredentialsAnswer = await siInstance.askQuestion({
+        message: 'Please provide the docker registry credentials as shown above',
+        type: 'input',
+        default: '',
+        name: 'docker credentials'
+      });
+      const dockerCredentialsArray: string[] = dockerCredentialsAnswer.value.split('|');
+
+      console.log('great! Lets start your service: please enter your service info in the following format:');
+      console.log(`${cs('serviceImage', 'pink')}|${cs('serviceName', 'pink')}|${cs('serviceDomain', 'pink')}`);
+      const serviceInfoAnswer = await siInstance.askQuestion({
+        message: 'Please provide the service info as shown above',
+        type: 'input',
+        default: '',
+        name: 'docker credentials'
+      });
+      const serviceInfoArray: string[] = serviceInfoAnswer.value.split('|');
+
       const singleServiceInstance = new SingleService({
-        dockerImage: '',
-        dockerPass: '',
-        dockerRegistry: '',
-        dockerUser: ''
+        dockerRegistry: dockerCredentialsArray[0],
+        dockerUser: dockerCredentialsArray[1],
+        dockerPass: dockerCredentialsAnswer[2],
+        serviceImage: serviceInfoArray[0],
+        serviceName: serviceInfoArray[1],
+        serviceDomain: serviceInfoArray[2]
       });
       singleServiceInstance.deploy();
     }
   }
 
-  // install traefik stack
-
 });
-
-/**
- * stack command
- * adds ability to start stacks on server like a simple traffic server
- */
-serverConfigCli.addCommand('stack').subscribe(argvArg => {
-  
-});
-
 serverConfigCli.startParse();
