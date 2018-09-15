@@ -1,5 +1,9 @@
+# gitzone standard
 .nogit/
 node_modules/
 coverage/
 public/
 pages/
+
+# custom
+/assets/singleservice/stack.yml
