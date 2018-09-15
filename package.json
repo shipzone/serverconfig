@@ -1,6 +1,6 @@
 {
   "name": "@shipzone/serverconfig",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "private": false,
   "description": "ship to new servers quickly",
   "main": "dist/index.js",
