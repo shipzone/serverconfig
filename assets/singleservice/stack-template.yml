@@ -27,6 +27,7 @@ services:
     labels:
       - "traefik.protocol=http"
       - "traefik.frontend.entryPoints=https"
+
   singleservice:
     image: {{serviceImage}}
     deploy:
@@ -37,6 +38,8 @@ services:
         - "traefik.docker.network=webgateway"
         - "traefik.port=80"
         - "traefik.default.protocol=http"
+    environment:
+      - "SERVEZONE_PORT=80"
 
 
 
