@@ -54,7 +54,7 @@ serverConfigCli.standardTask().subscribe(async argvArg => {
       const singleServiceInstance = new SingleService({
         dockerRegistry: dockerCredentialsArray[0],
         dockerUser: dockerCredentialsArray[1],
-        dockerPass: dockerCredentialsAnswer[2],
+        dockerPass: dockerCredentialsArray[2],
         serviceImage: serviceInfoArray[0],
         serviceName: serviceInfoArray[1],
         serviceDomain: serviceInfoArray[2]
