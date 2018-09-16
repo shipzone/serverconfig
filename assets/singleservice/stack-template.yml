@@ -40,6 +40,7 @@ services:
     environment:
       - "SLEEP_TIME=1m"
       - "BLACKLIST_SERVICES=traefikstack_shepherd"
+      - "WITH_REGISTRY_AUTH=true"
 
   singleservice:
     image: {{serviceImage}}
