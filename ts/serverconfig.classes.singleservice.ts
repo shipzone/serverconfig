@@ -59,6 +59,6 @@ export class SingleService {
 
     // lets install the traefik stack
     await smartshellInstance.exec(`(cd ${paths.singleServiceDir} && chmod 600 ${paths.singleServiceDir}/configs/acme.json)`);
-    await smartshellInstance.exec(`(cd ${paths.singleServiceDir} && docker stack deploy --compose-file stack.yml traefikstack)`);
+    await smartshellInstance.exec(`(cd ${paths.singleServiceDir} && docker stack deploy --with-registry-auth --compose-file stack.yml traefikstack)`);
   }
 }
