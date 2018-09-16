@@ -37,6 +37,7 @@ services:
           - node.role == manager
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+      - /root/.docker/config.json:/root/.docker/config.json
     environment:
       - "SLEEP_TIME=1m"
       - "BLACKLIST_SERVICES=traefikstack_shepherd"
