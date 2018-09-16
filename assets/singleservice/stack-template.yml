@@ -44,6 +44,7 @@ services:
   singleservice:
     image: {{serviceImage}}
     deploy:
+      replicas: 1
       labels:
         - "traefik.backend={{serviceName}}"
         - "traefik.enable=true"
@@ -51,6 +52,12 @@ services:
         - "traefik.docker.network=webgateway"
         - "traefik.port=80"
         - "traefik.default.protocol=http"
+      update_config:
+          parallelism: 1
+          delay: 10s
+        restart_policy:
+          condition: on-failure
+    autoredeploy: true
     environment:
       - "SERVEZONE_PORT=80"
 
