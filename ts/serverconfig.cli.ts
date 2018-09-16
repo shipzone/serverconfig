@@ -1,4 +1,5 @@
 import * as plugins from './serverconfig.plugins';
+import { ServerConfig } from './serverconfig.classes.serverconfig';
 import { SingleService } from './serverconfig.classes.singleservice';
 
 import { coloredString as cs } from '@pushrocks/consolecolor';
@@ -6,6 +7,13 @@ import { coloredString as cs } from '@pushrocks/consolecolor';
 const serverConfigCli = new plugins.smartcli.Smartcli();
 
 serverConfigCli.standardTask().subscribe(async argvArg => {
+  // check if server is already configured
+  const serverConfig = ServerConfig.getDefaultInstance();
+  if(serverConfig.serverAlreadyConfigured()) {
+    console.log('Server is already configured! Nothing ti di here!')
+    return
+  }
+
   const siInstance = new plugins.smartinteract.SmartInteract();
   siInstance.addQuestions([
     {
@@ -13,7 +21,9 @@ serverConfigCli.standardTask().subscribe(async argvArg => {
       choices: [
         'single service configured through cli',
         'single service configured through configly',
-        'servezone node'],
+        'stack.yml versioned in git',
+        'servezone node'
+      ],
       default: 'single service',
       name: 'purpose',
       type: 'list'
