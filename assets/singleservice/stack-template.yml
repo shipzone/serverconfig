@@ -53,10 +53,10 @@ services:
         - "traefik.port=80"
         - "traefik.default.protocol=http"
       update_config:
-          parallelism: 1
-          delay: 10s
-        restart_policy:
-          condition: on-failure
+        parallelism: 1
+        delay: 10s
+      restart_policy:
+        condition: on-failure
     autoredeploy: true
     environment:
       - "SERVEZONE_PORT=80"
