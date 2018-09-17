@@ -9,9 +9,9 @@ const serverConfigCli = new plugins.smartcli.Smartcli();
 serverConfigCli.standardTask().subscribe(async argvArg => {
   // check if server is already configured
   const serverConfig = ServerConfig.getDefaultInstance();
-  if(serverConfig.serverAlreadyConfigured()) {
-    console.log('Server is already configured! Nothing ti di here!')
-    return
+  if (serverConfig.serverAlreadyConfigured()) {
+    console.log('Server is already configured! Nothing ti di here!');
+    return;
   }
 
   const siInstance = new plugins.smartinteract.SmartInteract();
@@ -31,18 +31,35 @@ serverConfigCli.standardTask().subscribe(async argvArg => {
   ]);
   const answerBucket = await siInstance.runQueue();
   const purpose = answerBucket.getAnswerFor('purpose');
-  if(purpose === 'single service configured through cli') {
-    console.log(`You selected ${cs('SINGLE SERVICE CONFIGURED THROUGH CLI', "green")} as purpose of this server.`)
-    console.log(`This will install ${cs('traefik', "pink")} with automatic ${cs('letsencrypt', "pink")} on this server`);
+  if (purpose === 'single service configured through cli') {
+    console.log(
+      `You selected ${cs(
+        'SINGLE SERVICE CONFIGURED THROUGH CLI',
+        'green'
+      )} as purpose of this server.`
+    );
+    console.log(
+      `This will install ${cs('traefik', 'pink')} with automatic ${cs(
+        'letsencrypt',
+        'pink'
+      )} on this server`
+    );
     const dockerLoginBool = await siInstance.askQuestion({
       message: 'do you want to log in to a private docker registry?',
       type: 'confirm',
       default: true,
       name: 'dockerLoginBool'
     });
-    if(dockerLoginBool.value) {
-      console.log('great! Lets start your service: please enter your service info in the following format:');
-      console.log(`${cs('REGISTRY_URL', 'pink')}|${cs('REGISTRY_USERNAME', 'pink')}|${cs('REGISTRY_PASSWORD', 'pink')}`);
+    if (dockerLoginBool.value) {
+      console.log(
+        'great! Lets start your service: please enter your service info in the following format:'
+      );
+      console.log(
+        `${cs('REGISTRY_URL', 'pink')}|${cs('REGISTRY_USERNAME', 'pink')}|${cs(
+          'REGISTRY_PASSWORD',
+          'pink'
+        )}`
+      );
       const dockerCredentialsAnswer = await siInstance.askQuestion({
         message: 'Please provide the docker registry credentials as shown above',
         type: 'input',
@@ -51,8 +68,12 @@ serverConfigCli.standardTask().subscribe(async argvArg => {
       });
       const dockerCredentialsArray: string[] = dockerCredentialsAnswer.value.split('|');
 
-      console.log('great! Lets start your service: please enter your service info in the following format:');
-      console.log(`${cs('serviceImage', 'pink')}|${cs('serviceName', 'pink')}|${cs('serviceDomain', 'pink')}`);
+      console.log(
+        'great! Lets start your service: please enter your service info in the following format:'
+      );
+      console.log(
+        `${cs('serviceImage', 'pink')}|${cs('serviceName', 'pink')}|${cs('serviceDomain', 'pink')}`
+      );
       const serviceInfoAnswer = await siInstance.askQuestion({
         message: 'Please provide the service info as shown above',
         type: 'input',
@@ -72,6 +93,5 @@ serverConfigCli.standardTask().subscribe(async argvArg => {
       singleServiceInstance.deploy();
     }
   }
-
 });
 serverConfigCli.startParse();

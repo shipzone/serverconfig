@@ -29,6 +29,7 @@
     "@pushrocks/smartinteract": "^2.0.4",
     "@pushrocks/smartlog": "^2.0.1",
     "@pushrocks/smartmustache": "^2.0.4",
-    "@pushrocks/smartshell": "^2.0.6"
+    "@pushrocks/smartshell": "^2.0.6",
+    "@pushrocks/smartssh": "^1.2.3"
   }
 }

@@ -1,6 +1,6 @@
 // native modules
 import * as path from 'path';
-export {path};
+export { path };
 
 // @pushrocks modules
 import * as consolecolor from '@pushrocks/consolecolor';
@@ -10,5 +10,15 @@ import * as smartinteract from '@pushrocks/smartinteract';
 import * as smartlog from '@pushrocks/smartlog';
 import * as smartmustache from '@pushrocks/smartmustache';
 import * as smartshell from '@pushrocks/smartshell';
+import * as smartssh from '@pushrocks/smartssh';
 
-export { consolecolor, smartcli, smartfile, smartinteract, smartlog, smartmustache, smartshell };
+export {
+  consolecolor,
+  smartcli,
+  smartfile,
+  smartinteract,
+  smartlog,
+  smartmustache,
+  smartshell,
+  smartssh
+};

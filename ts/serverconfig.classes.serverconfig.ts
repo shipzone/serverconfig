@@ -4,9 +4,9 @@ import { Server } from 'http';
 export class ServerConfig {
   public static getDefaultInstance = () => {
     return defaultServerConfigInstance;
-  }
+  };
 
-  public async serverAlreadyConfigured (): Promise<boolean> {
+  public async serverAlreadyConfigured(): Promise<boolean> {
     return false;
   }
 }

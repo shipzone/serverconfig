@@ -29,7 +29,7 @@ export class SingleService {
   config: ISingleServiceConfig;
   constructor(configArg: ISingleServiceConfig) {
     this.config = configArg;
-  };
+  }
 
   async deploy() {
     const smartshellInstance = new plugins.smartshell.Smartshell({
@@ -43,22 +43,33 @@ export class SingleService {
     const stringForDisk = mustacheTemplate.applyData({
       serviceImage: this.config.serviceImage,
       serviceName: this.config.serviceName,
-      serviceDomain: this.config.serviceDomain,
-    })
-    plugins.smartfile.memory.toFs(stringForDisk, plugins.path.join(paths.singleServiceDir, 'stack.yml'));
-    
+      serviceDomain: this.config.serviceDomain
+    });
+    plugins.smartfile.memory.toFs(
+      stringForDisk,
+      plugins.path.join(paths.singleServiceDir, 'stack.yml')
+    );
+
     // lets put the server into swarm mode
     await smartshellInstance.exec('(docker swarm init )');
 
     // lets login to the docker registry
     await smartshellInstance.exec(
-      `(docker login -u ${this.config.dockerUser} -p ${this.config.dockerPass} ${this.config.dockerRegistry})`
-    )
+      `(docker login -u ${this.config.dockerUser} -p ${this.config.dockerPass} ${
+        this.config.dockerRegistry
+      })`
+    );
 
     await smartshellInstance.exec('docker network create -d overlay --attachable webgateway');
 
     // lets install the traefik stack
-    await smartshellInstance.exec(`(cd ${paths.singleServiceDir} && chmod 600 ${paths.singleServiceDir}/configs/acme.json)`);
-    await smartshellInstance.exec(`(cd ${paths.singleServiceDir} && docker stack deploy --with-registry-auth --compose-file stack.yml traefikstack)`);
+    await smartshellInstance.exec(
+      `(cd ${paths.singleServiceDir} && chmod 600 ${paths.singleServiceDir}/configs/acme.json)`
+    );
+    await smartshellInstance.exec(
+      `(cd ${
+        paths.singleServiceDir
+      } && docker stack deploy --with-registry-auth --compose-file stack.yml traefikstack)`
+    );
   }
 }
