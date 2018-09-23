@@ -9,8 +9,8 @@ const serverConfigCli = new plugins.smartcli.Smartcli();
 serverConfigCli.standardTask().subscribe(async argvArg => {
   // check if server is already configured
   const serverConfig = ServerConfig.getDefaultInstance();
-  if (serverConfig.serverAlreadyConfigured()) {
-    console.log('Server is already configured! Nothing ti di here!');
+  if (await serverConfig.serverAlreadyConfigured()) {
+    console.log('Server is already configured! There is nothing to do here!');
     return;
   }
 
