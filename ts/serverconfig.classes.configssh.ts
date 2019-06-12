@@ -1,5 +1,3 @@
 import * as plugins from './serverconfig.plugins';
 
-export class ConfigSsh {
-  
-}
+export class ConfigSsh {}

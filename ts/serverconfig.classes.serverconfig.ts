@@ -2,13 +2,22 @@ import * as plugins from './serverconfig.plugins';
 import { Server } from 'http';
 
 export class ServerConfig {
-  public static getDefaultInstance = () => {
-    return defaultServerConfigInstance;
+  // STATIC
+  private static defaultInstance: ServerConfig
+  public static async getInstance() {
+    if (!ServerConfig.defaultInstance) {
+      ServerConfig.defaultInstance = new ServerConfig();
+    }
+    return ServerConfig.defaultInstance;
   };
 
-  public async serverAlreadyConfigured(): Promise<boolean> {
-    return false;
+  // INSTANCE
+  configObject: any;
+  constructor() {
+
+  }
+
+  get isConfigured (): boolean {
+    return this.configObject ? true : false;
   }
 }
-
-const defaultServerConfigInstance = new ServerConfig();

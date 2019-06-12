@@ -2,5 +2,15 @@
   "npmci": {
     "npmGlobalTools": [],
     "npmAccessLevel": "public"
+  },
+  "gitzone": {
+    "module": {
+      "githost": "gitlab.com",
+      "gitscope": "shipzone",
+      "gitrepo": "serverconfig",
+      "shortDescription": "ship to new servers quickly",
+      "npmPackagename": "@shipzone/serverconfig",
+      "license": "MIT"
+    }
   }
 }
