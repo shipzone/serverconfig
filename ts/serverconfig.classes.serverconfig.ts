@@ -1,5 +1,5 @@
+// controls your server using configly
 import * as plugins from './serverconfig.plugins';
-import { Server } from 'http';
 
 export class ServerConfig {
   // STATIC
