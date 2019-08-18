@@ -20,11 +20,10 @@ serverConfigCli.standardTask().subscribe(async argvArg => {
       message: 'Please enter the configly token:',
       default: 'ip based',
       name: 'token',
-      type: "input"
+      type: 'input'
     }
   ]);
   const answerBucket = await siInstance.runQueue();
   const token = answerBucket.getAnswerFor('token');
-  
 });
 serverConfigCli.startParse();
