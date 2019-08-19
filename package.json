@@ -12,6 +12,7 @@
   },
   "scripts": {
     "test": "(tstest test/)",
+    "testLocal": "node cli.ts.js",
     "build": "(tsbuild)"
   },
   "devDependencies": {
@@ -19,18 +20,23 @@
     "@gitzone/tsrun": "^1.2.6",
     "@gitzone/tstest": "^1.0.24",
     "@pushrocks/tapbundle": "^3.0.9",
-    "@types/node": "^12.0.8"
+    "@types/node": "^12.0.8",
+    "tslint": "^5.18.0",
+    "tslint-config-prettier": "^1.18.0"
   },
   "dependencies": {
+    "@mojoio/docker": "^1.0.50",
     "@pushrocks/consolecolor": "^2.0.1",
     "@pushrocks/early": "^3.0.3",
     "@pushrocks/smartcli": "^3.0.7",
     "@pushrocks/smartfile": "^7.0.2",
     "@pushrocks/smartinteract": "^2.0.4",
     "@pushrocks/smartlog": "^2.0.19",
+    "@pushrocks/smartlog-destination-local": "^8.0.2",
     "@pushrocks/smartmustache": "^2.0.7",
     "@pushrocks/smartshell": "^2.0.23",
-    "@pushrocks/smartssh": "^1.2.3"
+    "@pushrocks/smartssh": "^1.2.3",
+    "@pushrocks/taskbuffer": "^2.0.7"
   },
   "files": [
     "ts/*",

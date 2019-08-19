@@ -1,5 +1,6 @@
 import * as plugins from './serverconfig.plugins';
 import { ServerConfig } from './serverconfig.classes.serverconfig';
+import { logger } from './serverconfig.logging';
 
 import { coloredString as cs } from '@pushrocks/consolecolor';
 
@@ -17,7 +18,7 @@ serverConfigCli.standardTask().subscribe(async argvArg => {
   const siInstance = new plugins.smartinteract.SmartInteract();
   siInstance.addQuestions([
     {
-      message: 'Please enter the configly token:',
+      message: 'Please enter the configly token (If you enter no token, it will be ip based):',
       default: 'ip based',
       name: 'token',
       type: 'input'
@@ -25,5 +26,9 @@ serverConfigCli.standardTask().subscribe(async argvArg => {
   ]);
   const answerBucket = await siInstance.runQueue();
   const token = answerBucket.getAnswerFor('token');
+
+  if (token === 'ip based') {
+    
+  }
 });
 serverConfigCli.startParse();
