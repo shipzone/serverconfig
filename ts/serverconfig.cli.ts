@@ -28,7 +28,13 @@ serverConfigCli.standardTask().subscribe(async argvArg => {
   const token = answerBucket.getAnswerFor('token');
 
   if (token === 'ip based') {
-    
+    logger.log('info', `retrieving config by ip`);
+  } else {
+    logger.log('info', `retrieving config with token`);
+  }
+
+  if (argvArg.server) {
+    logger.log('info', `a custom server has been set: ${argvArg.server}`);
   }
 });
 serverConfigCli.startParse();

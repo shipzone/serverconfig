@@ -12,7 +12,7 @@
   },
   "scripts": {
     "test": "(tstest test/)",
-    "testLocal": "node cli.ts.js",
+    "testLocal": "node cli.ts.js --server config.bleu.de",
     "build": "(tsbuild)"
   },
   "devDependencies": {

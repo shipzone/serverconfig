@@ -12,7 +12,7 @@ export class ServerConfig {
   }
 
   // INSTANCE
-  configObject: any;
+  public configObject: any;
   constructor() {}
 
   get isConfigured(): boolean {
